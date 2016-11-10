@@ -3,14 +3,20 @@
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../theme/theme.html">
 
 <dom-module id="louis-bompart-github-io-app">
   <template>
-    <style>
+    <style include="app-grid-style">
       :host {
         display: block;
         @apply(--paper-font-common-base);
+        --app-grid-columns: 3;
+        --app-grid-gutter: 10px;
+        --app-grid-expandible-item-columns: 3;
       }
 
       body {
@@ -31,20 +37,80 @@
           color: var(--primary-text-color);
         }
       }
+
+      paper-material {
+        background-color: var(--light-primary-color);
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+      paper-card {
+        background-color: var(--light-primary-color);
+      }
+
+      .big-item {
+        @apply(--app-grid-expandible-item);
+      }
+      @media (max-width: 799px) {
+        :host {
+          --app-grid-columns: 2;
+          --app-grid-gutter: 5px;
+          --app-grid-expandible-item-columns: 2;
+        }
+    }
     </style>
   <app-drawer-layout fullbleed>
     <app-drawer persistent>
-      <h2>Hello [[prop1]]</h2>
+      <h2></h2>
     </app-drawer>
-  <app-header-layout>
+  <app-header-layout id="layout">
     <app-header>
       <app-toolbar>
         <paper-icon-button icon="menu"></paper-icon-button>
       </app-toolbar>
       <app-toolbar>
-        <h1>Hello [[prop1]]</h1>
+        <h1>[[pageTitle]]</h1>
       </app-toolbar>
     </app-header>
+    <!--Main content-->
+    <div>
+      <div class="app-grid">
+        <paper-material class="big-item" elevation="1">
+          <p align="justify">The Babel fish is small, yellow, leech-like, and probably the oddest thing in the universe. It feeds on brain wave energy, absorbing all unconscious frequencies and then excreting telepathically a matrix formed from the conscious frequencies and nerve signals picked up from the speech centres of the brain, the practical upshot of which is that if you stick one in your ear, you can instantly understand anything said to you in any form of language: the speech you hear decodes the brain wave matrix.</p>
+        </paper-material>
+        <paper-card heading="Call Jennifer" class="cyan">
+           <div class="card-actions">
+             <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
+             <span>March 19, 2017</span>
+           </div>
+         </paper-card>
+         <paper-card heading="Call Jennifer" class="cyan">
+            <div class="card-actions">
+              <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
+              <span>March 19, 2017</span>
+            </div>
+          </paper-card>
+          <paper-card heading="Call Jennifer" class="cyan">
+             <div class="card-actions">
+               <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
+               <span>March 19, 2017</span>
+             </div>
+           </paper-card>
+           <paper-card heading="Call Jennifer" class="cyan">
+              <div class="card-actions">
+                <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
+                <span>March 19, 2017</span>
+              </div>
+            </paper-card>
+            <paper-card heading="Call Jennifer" class="cyan">
+               <div class="card-actions">
+                 <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
+                 <span>March 19, 2017</span>
+               </div>
+             </paper-card>
+           </div>
+    </div>
   </app-header-layout>
 </app-drawer-layout>
   </template>
@@ -53,13 +119,21 @@
     Polymer({
 
       is: 'louis-bompart-github-io-app',
-
-      properties: {
-        prop1: {
-          type: String,
-          value: 'Jack',
-        },
+      attached: function() {
+        this._updateGridStyles = this._updateGridStyles || function() {
+          this.updateStyles();
+        }.bind(this);
+        window.addEventListener('resize', this._updateGridStyles);
       },
+      detached: function() {
+        window.removeEventListener('resize', this._updateGridStyles);
+      },
+      properties: {
+        pageTitle: {
+          type: String,
+          value: 'Home',
+        },
+      }
 
     });
   </script>

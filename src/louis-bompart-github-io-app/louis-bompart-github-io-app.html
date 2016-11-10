@@ -60,14 +60,14 @@
         }
     }
     </style>
-  <app-drawer-layout fullbleed>
-    <app-drawer persistent>
+  <app-drawer-layout id="layout" narrow={{isNarrow}} fullbleed>
+    <app-drawer persistent swipeOpen>
       <h2></h2>
     </app-drawer>
-  <app-header-layout id="layout">
+  <app-header-layout>
     <app-header>
       <app-toolbar>
-        <paper-icon-button icon="menu"></paper-icon-button>
+        <paper-icon-button id="menu" icon="menu" hidden="[[!isNarrow]]"></paper-icon-button>
       </app-toolbar>
       <app-toolbar>
         <h1>[[pageTitle]]</h1>
@@ -119,6 +119,12 @@
     Polymer({
 
       is: 'louis-bompart-github-io-app',
+      listeners: {
+        'menu.tap':'onMenuTap'
+      },
+      onMenuTap: function (e) {
+        this.$.layout.drawer.toggle();
+      },
       attached: function() {
         this._updateGridStyles = this._updateGridStyles || function() {
           this.updateStyles();
@@ -133,6 +139,9 @@
           type: String,
           value: 'Home',
         },
+        isNarrow: {
+          type: Boolean
+        }
       }
 
     });

@@ -8,25 +8,27 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-styles/color.html">
-<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-styles/color.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
 
 <!-- Taken from https://www.google.com/design/spec/style/color.html#color-ui-color-application -->
 
 <style is="custom-style">
   :root {
+    --elevation-1-background-color: #ffffff;
     /*
      * You can use these generic variables in your elements for easy theming.
      * For example, if all your elements use `--primary-text-color` as its main
      * color, then switching from a light to a dark theme is just a matter of
      * changing the value of `--primary-text-color` in your application.
      */
-    --primary-text-color: var(--dark-theme-text-color);
+    --menu-text-color: var(--dark-theme-text-color);
+    --primary-text-color: var(--light-theme-text-color);
     --primary-background-color: var(--light-theme-background-color);
-    --secondary-text-color: var(--light-theme-secondary-color);
-    --disabled-text-color: var(--light-theme-disabled-color);
-    --divider-color: var(--light-theme-divider-color);
+    --secondary-text-color: var(--dark-theme-secondary-color);
+    --disabled-text-color: var(--dark-theme-disabled-color);
+    --divider-color: var(--dark-theme-divider-color);
     --error-color: var(--paper-deep-orange-a700);
     /*
      * Primary and accent colors. Also see color.html for more colors.
@@ -34,13 +36,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     --primary-color: var(--paper-teal-500);
     --light-primary-color: var(--paper-teal-100);
     --dark-primary-color: var(--paper-teal-700);
-    --accent-color: var(--paper-amber-a200);
-    --light-accent-color: var(--paper-amber-a100);
-    --dark-accent-color: var(--paper-amber-a400);
+    --accent-color: var(--paper-lime-a200);
+    --light-accent-color: var(--paper-lime-a100);
+    --dark-accent-color: var(--paper-lime-a400);
     /*
      * Material Design Light background theme
      */
-    --light-theme-background-color: #ffffff;
+    --light-theme-background-color: var(--paper-grey-200);
     --light-theme-base-color: #000000;
     --light-theme-text-color: var(--paper-grey-900);
     --light-theme-secondary-color: #737373;  /* for secondary text and icons */

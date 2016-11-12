@@ -1,0 +1,169 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="theme.html">
+
+<dom-module id="my-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--paper-font-common-base);
+      }
+
+      body {
+        @apply(--paper-font-common-base);
+        color : var(--menu-text-color);
+        background-color: var(--primary-color);
+      }
+
+      app-header {
+        @apply(--paper-font-style);
+        color: var(--menu-text-color);
+        background-color: var(--primary-color);
+      }
+
+      app-drawer {
+        --app-drawer-content-container: {
+          background-color: var(--dark-primary-color);
+          color: var(--menu-text-color);
+        }
+      }
+
+      .navigator {
+        --paper-listbox-background-color: var(--dark-primary-color);
+      }
+
+      paper-item {
+        color: var(--menu-text-color);
+      }
+
+    </style>
+    <iron-ajax url="../data/pages.json" auto last-response="{{pages}}"></iron-ajax>
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+    <app-drawer-layout fullbleed>
+      <!-- Drawer content -->
+      <app-drawer>
+        <app-toolbar>Menu</app-toolbar>
+        <paper-listbox class="navigator" selected="{{routeData.page}}" attr-for-selected="name" role="listbox" fallback-selection="home">
+          <template is="dom-repeat" items="[[pages]]">
+            <paper-item name="[[item.name]]">{{item.title}}</paper-item>
+          </template>
+          <!-- Just for 404 -->
+          <paper-item name="error-404" hidden></paper-item>
+        </paper-listbox>
+      </app-drawer>
+
+      <!-- Main content -->
+      <app-header-layout has-scrolling-region>
+
+        <app-header condenses reveals effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+            <div condensed-title>{{currentTitle}}</div>
+          </app-toolbar>
+          <app-toolbar>
+            <div main-title>{{currentTitle}}</div>
+          </app-toolbar>
+        </app-header>
+
+        <iron-pages id="pages"
+            selected="[[page]]"
+            attr-for-selected="name"
+            selected-item={{selectedPage}}
+            fallback-selection="error-404"
+            role="main">
+          <home-view name="home"></home-view>
+          <error-404-view name="error-404"></error-404-view>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-app',
+
+      properties: {
+
+        pages: {
+          type: Array,
+          value: [],
+          observer: '_pagesLoaded'
+        },
+
+        page: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_pageChanged'
+        },
+
+        currentTitle: String,
+        value: 'Home'
+
+      },
+
+      observers: [
+        '_routePageChanged(routeData.page)'
+      ],
+      _pagesLoaded : function () {
+        this._updateTitle();
+      },
+
+      _routePageChanged: function(page) {
+        this.page = page || 'home';
+      },
+
+      _pageChanged: function(page) {
+        // Load page import on demand. Show 404 page if fails
+        var resolvedPageUrl = this.resolveUrl(page + '-view.html');
+        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+        if(this.pages!=undefined) {
+          this._updateTitle();
+        }
+        //this.pageTitle = this.selectedPage.getAttribute("page-title");
+      },
+
+      _updateTitle: function () {
+        for (var i = 0; i < this.pages.length; i++) {
+          if(this.pages[i].name===this.page) {
+            this.currentTitle=this.pages[i].title;
+          }
+        }
+      },
+
+      _showPage404: function() {
+        this.page = 'error-404';
+        this.set('route.path', '/error-404/');
+      }
+    });
+  </script>
+</dom-module>

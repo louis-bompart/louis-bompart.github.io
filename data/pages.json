@@ -1,0 +1,14 @@
+[
+  {
+    "name":"home",
+    "element": "home-view",
+    "title":"Home",
+    "url":"home-view.html"
+  },
+  {
+    "name":"lol",
+    "element": "lol-view",
+    "title":"Lol",
+    "url":"lol-view.html"
+  }
+]

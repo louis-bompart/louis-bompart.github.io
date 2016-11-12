@@ -1,0 +1,75 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="theme.html">
+
+
+<dom-module id="home-view">
+  <template>
+    <style include="app-grid-style">
+      :host {
+        display: block;
+        @apply(--paper-font-common-base);
+        --app-grid-columns: 3;
+        --app-grid-gutter: 10px;
+        --app-grid-expandible-item-columns: 3;
+        background-color: var(--primary-background-color);
+      }
+
+      body {
+        @apply(--paper-font-common-base);
+        color : var(--primary-text-color);
+        background-color: var(--primary-color);
+      }
+      paper-material {
+        background-color: var(--elevation-1-background-color);
+        color: var(--primary-text-color);
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+      paper-card {
+        background-color: var(--elevation-1-background-color);
+      }
+
+      .big-item {
+        @apply(--app-grid-expandible-item);
+      }
+      @media (max-width: 799px) {
+        :host {
+          --app-grid-columns: 2;
+          --app-grid-gutter: 5px;
+          --app-grid-expandible-item-columns: 2;
+        }
+    }
+    </style>
+    <div class="app-grid">
+      <paper-material class="big-item" elevation="1">
+        <p align="justify">The Babel fish is small, yellow, leech-like, and probably the oddest thing in the universe. It feeds on brain wave energy, absorbing all unconscious frequencies and then excreting telepathically a matrix formed from the conscious frequencies and nerve signals picked up from the speech centres of the brain, the practical upshot of which is that if you stick one in your ear, you can instantly understand anything said to you in any form of language: the speech you hear decodes the brain wave matrix.</p>
+      </paper-material>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'home-view',
+      properties: {
+        pageTitle: {
+          type: String,
+          value: 'Home',
+          readOnly: true
+        }
+      },
+      attached: function () {
+        this.currentTitle=this.pageTitle;
+      }
+
+    });
+  </script>
+</dom-module>

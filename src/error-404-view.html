@@ -1,0 +1,16 @@
+<html><head><meta charset="UTF-8"><link rel="import" href="my-app.html"></head><body><dom-module id="error-404-view">
+  <template>
+    <style>
+      :host {
+        display: block;
+
+        padding: 10px 20px;
+      }
+    </style>
+
+    Oops you hit a 404. <a href="/home">Head back to home.</a>
+  </template>
+
+  <script>Polymer({is:"error-404-view",properties:{pageTitle:{type:String,value:"Dead End",readOnly:!0}}});</script>
+</dom-module>
+</body></html>

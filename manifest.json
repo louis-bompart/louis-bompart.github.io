@@ -1,0 +1,8 @@
+{
+  "name": "Louis Bompart's portfolio",
+  "short_name": "Louis' portfolio",
+  "start_url": "/?homescreen=1",
+  "display": "standalone",
+  "theme_color": "#009688",
+  "background_color": "#CDDC39"
+}

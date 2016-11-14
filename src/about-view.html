@@ -1,0 +1,179 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+
+
+<link rel="import" href="../bower_components/app-layout/app-box/app-box.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+
+<dom-module id="about-view">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      app-toolbar {
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 5px;
+        text-align: center;
+        color: #1a237e;
+      }
+
+      .nav {
+        height: 64px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .nav li {
+        display: inline-block;
+        list-style: none;
+      }
+
+      .nav a {
+        display: inline-block;
+        font-weight: 12px;
+        line-height: 64px;
+        text-decoration: none;
+        color: black;
+        font-weight: 300;
+        margin: 0 10px;
+      }
+
+      .nav a:hover {
+        color: #444;
+        border-bottom: 1px solid #999;
+      }
+
+      .first, .second, .third, .fourth {
+        height: 640px;
+      }
+
+      .second {
+        --app-box-background-front-layer: {
+          background-image: url(//app-layout-assets.appspot.com/assets/bg2.jpg);
+          background-position: bottom;
+          padding-bottom: 120px;
+          margin-top: -20px;
+          height: 100%;
+        };
+      }
+
+      .third {
+        --app-box-background-front-layer: {
+          background-image: url(//app-layout-assets.appspot.com/assets/bg3.jpg);
+          background-position: bottom;
+          padding-bottom: 120px;
+          margin-top: -20px;
+          height: 100%;
+        };
+      }
+
+      .fourth {
+        --app-box-background-front-layer: {
+          background-image: url(//app-layout-assets.appspot.com/assets/bg4.jpg);
+          background-position: bottom;
+
+          margin-top: -20px;
+          height: 100%;
+        };
+      }
+
+      section {
+        padding-top: 100px;
+      }
+
+      article {
+        font-weight: 100;
+        max-width: 600px;
+        text-align: center;
+        margin: 0 auto 50px auto;
+      }
+      article h2 {
+        font-weight: 100;
+        font-size: 50px;
+        margin: 5px;
+      }
+      article p {
+        font-size: 18px;
+        line-height: 30px;
+      }
+
+      article hr {
+        width: 100px;
+        height: 1px;
+        border: none;
+        margin: 20px auto;
+        background-color: black;
+      }
+    </style>
+    <div>
+      <section id="toulouse">
+        <article>
+          <hr />
+          <h2>Prep School</h2>
+          <h3>A french pecular speciality</h3>
+          <h4>Toulouse, 2012 - 2014</h4>
+          <p>Limited entrance, 2 years intense study and an even more selective exit, that's prep school in a nutshell for you.</p>
+          <p>During those two years, I studied, ate and breathed mathematics, physics and mechanical engineering, all that's only to get into the best college I can. Strange use of knowledge, I reckon.</p>
+        </article>
+        <app-box style="height: 640px;" effects="parallax-background">
+          <iron-image sizing="cover" background src="../images/backgrounds/toulouse.jpg" style="width: 100%; height: 600px;"></iron-image>
+        </app-box>
+      </section>
+      <section id="paris">
+        <article>
+          <hr />
+          <h2>Engineering College</h2>
+          <h3>Computer sciences, at last !</h3>
+          <h4>Paris, 2014 - 2016</h4>
+          <p>Yeah during my lastest year of high school and my prep schools years, I've started to get quite interested in programming. I've started learning C/C++ but well, I quickly stutter on pointers and my time and soul were consummed lately by fundamental sciences.</p>
+          <p>So, it's with high spirits that I started studying at ESILV (french acronym for Engineering College Leonardo da Vinci. Neat, isn't it ?). First, I've studied the common base of the french engineer and then, at last, during my second year in Paris, I started getting real about computer sciences.</p>
+        </article>
+        <app-box style="height: 640px;" effects="parallax-background">
+          <iron-image sizing="cover" background src="../images/backgrounds/paris.jpg" style="width: 100%; height: 600px"></iron-image>
+        </app-box>
+        <article>
+          <hr />
+          <h2>Aside the books ...</h2>
+          <h3>Paris Edition</h3>
+          <p>I also founded a student's association, "Veni, Vidi, De Vinci" to bridge the gap between different students promotions and to cultivate a newborn school spirit.</p>
+          <p>During this second year, I had the chance to study multiple subject in computer sciences, like AI (I really liked this one), Mobile development, Data Mining and many other.</p>
+          <!-- TODO: Link to Nec Mergitur -->
+          <p>However, those two years were alas also stained with blood, with two dreadful terrorist attacks. Some friends and I choosed to react and use our skills in the <a href="#todo">Hackathon Nec Mergitur</a>.</p>
+        </article>
+        <app-box style="height: 640px;" effects="parallax-background">
+          <iron-image sizing="cover" background src="../images/backgrounds/paris2.jpg" style="width: 100%; height: 600px"></iron-image>
+        </app-box>
+      </section>
+
+      <section id="canada">
+        <article>
+          <hr />
+          <h2>Engineering College, just on the other side of the Atlantic</h2>
+          <h3>O Canada !</h3>
+          <h4>Chicoutimi - QC, 2016 - 2017</h4>
+          <p>To complete my engineer degree I had the chance to go abroad for 6 months, but well I choosed to go a little bit longer.</p>
+          <p>Indeed I'm now in Canada at the " Université du Québec à Chicoutimi", studying computer sciences, but specialized in video game this time, yet another "life-time" passion.</p>
+          <p>I'm working on multiple projects, some related to video games, other closer to computer sciences. Stay tuned for more !</p>
+        </article>
+        <app-box style="height: 640px;" effects="parallax-background">
+          <iron-image sizing="cover" background src="../images/backgrounds/chicoutimi.jpg" style="width: 100%; height: 600px"></iron-image>
+        </app-box>
+      </section>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'about-view',
+      properties: {
+      }
+    });
+  </script>
+</dom-module>

@@ -83,9 +83,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </app-drawer>
 
       <!-- Main content -->
-      <app-header-layout has-scrolling-region>
-
-        <app-header condenses reveals effects="waterfall">
+      <app-header-layout  has-scrolling-region>
+        <app-header condenses reveals effects="waterfall resize-title">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
             <div condensed-title>{{currentTitle}}</div>
@@ -94,7 +93,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <div main-title>{{currentTitle}}</div>
           </app-toolbar>
         </app-header>
-
         <iron-pages id="pages"
             selected="[[page]]"
             attr-for-selected="name"
@@ -103,6 +101,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role="main">
           <home-view name="home"></home-view>
           <error-404-view name="error-404"></error-404-view>
+          <about-view name="about"></about-view>
+          <licenses-view name="licenses"></licenses-view>
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
@@ -126,14 +126,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           observer: '_pageChanged'
         },
 
-        currentTitle: String,
-        value: 'Home'
+        currentTitle: String
 
       },
 
       observers: [
         '_routePageChanged(routeData.page)'
       ],
+
       _pagesLoaded : function () {
         this._updateTitle();
       },

@@ -6,9 +6,15 @@
     "url":"home-view.html"
   },
   {
-    "name":"lol",
-    "element": "lol-view",
-    "title":"Lol",
-    "url":"lol-view.html"
+    "name":"about",
+    "element": "about-view",
+    "title":"About me",
+    "url":"about-view.html"
+  },
+  {
+    "name":"licenses",
+    "element": "licenses-view",
+    "title":"Licenses",
+    "url":"licenses-view.html"
   }
 ]

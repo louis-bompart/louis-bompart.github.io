@@ -1,0 +1,102 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+
+</head><body><dom-module id="licenses-view">
+  <template>
+    <style include="app-grid-style">
+          :host {
+            display: block;
+            @apply(--paper-font-common-base);
+            --app-grid-columns: 1;
+            --app-grid-gutter: 10px;
+            --app-grid-expandible-item-columns: 1;
+            background-color: var(--primary-background-color);
+          }
+
+          body {
+            @apply(--paper-font-common-base);
+            color : var(--primary-text-color);
+            background-color: var(--primary-color);
+          }
+          paper-material {
+            background-color: var(--elevation-1-background-color);
+            color: var(--primary-text-color);
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 24px;
+            padding-bottom: 24px;
+          }
+        }
+    </style>
+    <div class="app-grid">
+      <paper-material elevation="1">
+        <h2>Website composition and content</h2>
+        <h3>Copyright (c) 2016 - Louis Bompart</h3>
+        <p>
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:</p>
+
+        <p>
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.</p>
+
+        <p>
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.</p>
+      </paper-material>
+      <paper-material elevation="1">
+        <h2>Polymer, the web-plateform used by this site</h2>
+        <h3>Copyright (c) 2014 The Polymer Authors. All rights reserved.</h3>
+        <p>
+          Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+        </p>
+
+        <ul>
+          <li>
+            Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+          </li>
+          <li>
+           Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+         </li>
+         <li>
+           Neither the name of Google Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+         </li>
+       </ul>
+
+       <p>
+         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+       </p>
+      </paper-material>
+      <paper-material elevation="1">
+        <h2>Photos' licenses</h2>
+        <ul>
+          <li>
+            Toulouse's picture by <a href="//commons.wikimedia.org/wiki/User:Benh" title="User:Benh">Benh LIEU SONG</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=7292944">Link</a>
+          </li>
+          <li>
+           La Defense's picture by <a href="//commons.wikimedia.org/wiki/User:Dimitri_Destugues" title="User:Dimitri Destugues">Dimitri Destugues</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=13353095">Link</a>
+         </li>
+         <li>
+           Eiffel Tower's picture by <a rel="nofollow" class="external text" href="https://www.flickr.com/people/16103393@N05">ERIC SALARD</a> from PARIS, FRANCE - <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/airlines470/22707193477/">PARIS EIFFEL TOWER HONOR OUR VICTIMS "FLUCTUAT NEC MERGITUR"</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0" title="Creative Commons Attribution-Share Alike 2.0">CC BY-SA 2.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=45119055">Link</a>
+         </li>
+         <li>
+           Chicoutimi's picture by <a href="//commons.wikimedia.org/w/index.php?title=User:Jotru&amp;action=edit&amp;redlink=1" class="new" title="User:Jotru (page does not exist)">Jotru</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=2252246">Link</a>
+         </li>
+       </ul>
+      </paper-material>
+    </div>
+  </template>
+
+  <script>Polymer({is:"licenses-view",properties:{}});</script>
+</dom-module>
+</body></html>

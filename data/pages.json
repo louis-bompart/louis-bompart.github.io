@@ -1,20 +1,26 @@
 [
   {
-    "name":"home",
+    "name": "home",
     "element": "home-view",
-    "title":"Home",
-    "url":"home-view.html"
+    "title": "Home",
+    "url": "home-view.html"
   },
   {
-    "name":"about",
+    "name": "about",
     "element": "about-view",
-    "title":"About me",
-    "url":"about-view.html"
+    "title": "About me",
+    "url": "about-view.html"
   },
   {
-    "name":"licenses",
+    "name": "seascrap",
+    "element": "seascrap-view",
+    "title": "Sea Scrap",
+    "url": "seascrap-view.html"
+  },
+  {
+    "name": "licenses",
     "element": "licenses-view",
-    "title":"Licenses",
-    "url":"licenses-view.html"
+    "title": "Licenses",
+    "url": "licenses-view.html"
   }
 ]

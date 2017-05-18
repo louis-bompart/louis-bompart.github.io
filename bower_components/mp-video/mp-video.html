@@ -1,0 +1,57 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-toast/paper-toast.html">
+<script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
+
+
+
+</head><body><dom-module id="mp-video">
+    <style>
+        :host {
+            font: normal 14px "Helvetica Neue", Helvetica;
+            margin: 0 0 30px;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .video-container {
+            height: 0;
+            padding: 0;
+            padding-bottom: 56.25%; /* 16:9 */
+            position: relative;
+            overflow: hidden;
+        }
+
+        #youtubeVideo, #vimeoVideo, #htmlVideo { margin: 0 0 30px; }
+
+        .video-container iframe,
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #notifications {
+            --paper-toast-background-color: red;
+            --paper-toast-color: white;
+        }
+
+            #notifications a { color: white; }
+    </style>
+
+    <template>
+        <div class="video-container">
+            <div id="youtubeVideo"></div>
+            <div id="vimeoVideo"></div>
+            <div id="htmlVideo"></div>
+        </div>
+
+        <paper-toast id="notifications" class="fit-bottom">
+            <a href="http://minas.pachnis.com/projects/mp-video/bower_components/mp-video/" target="_blank"> Check the documentation for more info</a>
+        </paper-toast>
+    </template>
+
+    <script>Polymer({is:"mp-video",properties:{youtube:{type:Boolean},vimeo:{type:Boolean},htmlVideo:{type:Boolean},videoId:{type:String},videoAutoplay:{type:Number,value:0},videoVolume:{type:Number},videoFrameborder:{type:Number,value:0},vimeoPlayerColor:{type:String,value:""},htmlVideoMp4:{type:String,value:""},htmlVideoOgg:{type:String,value:""},htmlVideoWebm:{type:String,value:""},htmlVideoControls:{type:Boolean},htmlVideoThumbnail:{type:String,value:""},htmlVideoPreload:{type:String},videoAutoPlay:{type:Boolean},allowfullscreen:{type:Boolean,value:!1}},ready:function(){return this.youtube||this.vimeo||this.htmlVideo?(this.youtube&&this._createYoutubePlayer(),this.vimeo&&this._createVimeoPlayer(),void(this.htmlVideo&&this._createHtmlVideoPlayer())):(this.$.notifications.text="You haven't specify any video player (youtube, vimeo, html5).",this.$.notifications.duration=1e4,void this.$.notifications.show())},_createYoutubePlayer:function(){var e=(document.getElementsByTagName("mp-video"),document.createElement("iframe"));return e.setAttribute("src","//www.youtube.com/embed/"+this.videoId+"?autoplay="+this.videoAutoplay),e.setAttribute("frameborder",this.videoFrameborder),e.volume=this.videoVolume,this.allowfullscreen&&e.setAttribute("allowfullscreen",""),Polymer.dom(this.$.youtubeVideo).appendChild(e),this.$.youtubeVideo},_createVimeoPlayer:function(){var e=this,t=document.createElement("iframe"),o=$f(t);return t.setAttribute("src","//player.vimeo.com/video/"+this.videoId+"?api=1&autoplay="+this.videoAutoplay+"&color="+this.vimeoPlayerColor),t.setAttribute("autoplay",this.videoAutoplay),t.setAttribute("frameborder",this.videoFrameborder),this.allowfullscreen&&t.setAttribute("allowfullscreen",""),o.addEvent("ready",function(){o.api("setVolume",e.videoVolume)}),Polymer.dom(this.$.vimeoVideo).appendChild(t),this.$.vimeoVideo},_createHtmlVideoPlayer:function(){var e=document.createElement("video");if(e.setAttribute("poster",this.htmlVideoThumbnail),e.controls=this.htmlVideoControls,e.autoplay=this.videoAutoPlay,e.preload=this.htmlVideoPreload,e.volume=void 0!==this.videoVolume?this.videoVolume:"1.0",this.htmlVideoMp4){var t=document.createElement("source");t.setAttribute("src",this.htmlVideoMp4),t.setAttribute("type","video/mp4"),Polymer.dom(e).appendChild(t)}if(this.htmlVideoOgg){var o=document.createElement("source");o.setAttribute("src",this.htmlVideoOgg),o.setAttribute("type","video/ogg"),Polymer.dom(e).appendChild(o)}if(this.htmlVideoWebm){var i=document.createElement("source");i.setAttribute("src",this.htmlVideoWebm),i.setAttribute("type","video/webm"),Polymer.dom(e).appendChild(i)}return Polymer.dom(this.$.htmlVideo).appendChild(e),this.$.htmlVideo}});</script>
+</dom-module>
+</body></html>

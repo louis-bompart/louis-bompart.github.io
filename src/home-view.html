@@ -1540,15 +1540,10 @@
         margin: 1%;
       }
 
-      app-drawer-layout:-webkit-full-screen-ancestor app-header,
-      app-drawer-layout:-webkit-full-screen-ancestor app-drawer {
-        z-index: -1 !important;
-      }
-
       paper-toast {
-  width: 300px;
-  margin-left: calc(50vw - 150px);
-}
+        width: 300px;
+        margin-left: calc(50vw - 150px);
+      }
 
     </style>
     <paper-dialog opened="{{dialog}}" on-iron-overlay-opened="_trailerDialogOpen" on-iron-overlay-closed="_trailerDialogClose" id="trailer0">

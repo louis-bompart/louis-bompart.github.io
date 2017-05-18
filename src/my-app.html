@@ -1932,7 +1932,11 @@ r=r.__importElement||r,r._apply();n&&e.updateNativeStyleProperties(document.docu
       paper-item {
         color: var(--menu-text-color);
       }
-
+      
+      app-drawer-layout:-webkit-full-screen-ancestor app-header,
+      app-drawer-layout:-webkit-full-screen-ancestor app-drawer {
+        z-index: -1 !important;
+      }
     </style>
     <iron-ajax url="../data/pages.json" auto="" last-response="{{pages}}"></iron-ajax>
     <app-location route="{{route}}"></app-location>

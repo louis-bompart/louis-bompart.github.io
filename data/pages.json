@@ -12,12 +12,6 @@
     "url": "about-view.html"
   },
   {
-    "name": "seascrap",
-    "element": "seascrap-view",
-    "title": "Sea Scrap",
-    "url": "seascrap-view.html"
-  },
-  {
     "name": "licenses",
     "element": "licenses-view",
     "title": "Licenses",

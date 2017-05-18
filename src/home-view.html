@@ -2,20 +2,35 @@
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 <link rel="import" href="../bower_components/paper-styles/typography.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
+<link rel="import" href="../bower_components/mp-video/mp-video.html">
 <link rel="import" href="theme.html">
 
 
 <dom-module id="home-view">
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <template>
+    <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
+    <iron-media-query query="(max-width: 800px)" query-matches="{{narrowScreen}}"></iron-media-query>
     <style include="app-grid-style">
+
       :host {
         display: block;
         @apply(--paper-font-common-base);
         --app-grid-columns: 3;
-        --app-grid-gutter: 10px;
+        --app-grid-gutter: 50px;
         --app-grid-expandible-item-columns: 3;
         background-color: var(--primary-background-color);
       }
@@ -33,33 +48,125 @@
         padding-top: 24px;
         padding-bottom: 24px;
       }
+
+
       paper-card {
-        background-color: var(--elevation-1-background-color);
       }
+      .card-header { @apply --paper-font-headline; }
 
       .big-item {
         @apply(--app-grid-expandible-item);
       }
-      @media (max-width: 799px) {
+
+      @media (min-width: 1920px) {
+        :host {
+          --app-grid-columns: 3;
+          --app-grid-gutter: 50px;
+          --app-grid-expandible-item-columns: 3;
+        }
+
+        .big-item {
+          @apply --app-grid-expandible-item;
+        }
+      }
+
+      @media (min-width: 1280px) and (max-width: 1919px) {
         :host {
           --app-grid-columns: 2;
-          --app-grid-gutter: 5px;
+          --app-grid-gutter: 25px;
           --app-grid-expandible-item-columns: 2;
         }
-    }
-    </style>
-    <div class="app-grid">
-      <paper-material class="big-item" elevation="0">
-        <p align="justifiy">
-          Louis hails from Toulouse, South of France. He's currently completing a double degree with the Ecole Superieur d'Ingenieur Leonard de Vinci and the University of Quebec at Chicoutimi. He worked a lot in the student organisation he created, Veni Vidi De Vinci to make it one of the major organisation for every new student of his school. He also worked as a developer intern for E-Deal during few months before crossing the Atlantic to continue his studies at the University of Quebec at Chicoutimi. He's now looking for an awesome internship in Canada, if you find it, please <a href="#todo">contact him<a>, he doesn't bite !
-        </p>
-      </paper-material>
-      <!--TODO Implement random abstract -->
-      </paper-material>
-    </div>
-  </template>
 
+        .big-item {
+          @apply --app-grid-expandible-item;
+        }
+      }
+
+      @media (max-width: 1279px) {
+        :host {
+          --app-grid-columns: 1;
+          --app-grid-gutter: 5px;
+          --app-grid-expandible-item-columns: 1;
+        }
+
+        .big-item {
+          @apply --app-grid-expandible-item;
+        }
+      }
+
+      paper-dialog {
+        margin: 1%;
+      }
+
+      app-drawer-layout:-webkit-full-screen-ancestor app-header,
+      app-drawer-layout:-webkit-full-screen-ancestor app-drawer {
+        z-index: -1 !important;
+      }
+
+      paper-toast {
+  width: 300px;
+  margin-left: calc(50vw - 150px);
+}
+
+    </style>
+    <paper-dialog   opened={{dialog}}
+                    on-iron-overlay-opened="_trailerDialogOpen"
+                    on-iron-overlay-closed="_trailerDialogClose"
+                    id="trailer0">
+      <div>
+        <google-youtube video-id="fV6Bq4UI6xs">
+        </google-youtube>
+      </div>
+    </paper-dialog>
+    <div  id="grid" class="app-grid">
+      <paper-material class="big-item" elevation="1">
+        <p align="justifiy">
+          Hi, I'm Louis, I'm a graduating student, looking for an awesome internship near Quebec City, if you find one, please contact me!
+        </p>
+        <p>Hey, also check out below my latest games and projects !</p align="justify">
+      </paper-material>
+      <paper-card elevation="1" image="../images/MemoryGreedThumbnail.jpg">
+        <article class="card-content">
+          <h1 class="card-header">Memory_ Greed</h1>
+
+          <section class="card-description">
+            <p align="justifiy">
+              <strong>1</strong> system to control: The Grid. </br>
+              <strong>4</strong> Hackers: R3d, B7u, 6reen, Yell0w.</br>
+              <strong>Capture</strong> data nodes or steal them from your fellow hackers.</br>
+              <strong>Exploit</strong> vulnerabilities to boost your progression or hinder your rivals.</br>
+              <strong>Control</strong> The Grid.
+            </p>
+          </section>
+        </article>
+        <div class="card-actions">
+          <div class="horizontal around-justified layout">
+            <paper-button raised on-tap="showTrailer" project=0>
+              <iron-icon icon="av:featured-video"></iron-icon>
+              Trailer
+            </paper-button>
+            <paper-button raised on-tap="WIP">
+              <iron-icon icon="image:collections"></iron-icon>
+              Screenshots
+            </paper-button>
+            <paper-button raised on-tap="WIP">
+              <iron-icon icon="file-download"></iron-icon>
+              Download
+            </paper-button>
+          </div>
+        </div>
+      </paper-card>
+    </div>
+    <paper-toast id="toast" text="Sorry, nothing here for now"></paper-toast>
+    <script>
+      toast.fitInto = grid;
+    </script>
+  </template>
+<script>
+  toast.fitInto = grid;
+</script>
   <script>
+
     Polymer({
 
       is: 'home-view',
@@ -68,12 +175,50 @@
           type: String,
           value: 'Home',
           readOnly: true
+        },
+        narrowScreen: {
+          type: Boolean
+        },
+        trailers : {
+          type: Object,
+          value: {
+            0: "https://vimeopro.com/pixelquebec/pixel-challenge-2017/video/212615503"
+          }
         }
       },
+      showTrailer: function (e) {
+        // console.log(this.trailers[e.target.getAttribute('project')]);
+        if(this.narrowScreen){
+          window.location = this.trailers[e.target.getAttribute('project')];
+        }
+        else {
+          this.$$('#trailer'+e.target.getAttribute('project')).opened=true;
+        }
+      },
+
       attached: function () {
         this.currentTitle=this.pageTitle;
-      }
+        this._updateGridStyles = this._updateGridStyles || function() {
+          this.updateStyles();
+        }.bind(this);
+        window.addEventListener('resize', this._updateGridStyles);
+      },
 
+      _trailerDialogOpen : function (e) {
+        e.target.querySelector("google-youtube:first-of-type").play();
+      },
+
+      _trailerDialogClose : function (e) {
+        e.target.querySelector("google-youtube:first-of-type").pause();
+      },
+
+      WIP:function () {
+        this.$.toast.open();
+      },
+
+      detached: function() {
+        window.removeEventListener('resize', this._updateGridStyles);
+      }
     });
   </script>
 </dom-module>

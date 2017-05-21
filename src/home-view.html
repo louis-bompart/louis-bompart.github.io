@@ -29,9 +29,9 @@
       :host {
         display: block;
         @apply(--paper-font-common-base);
-        --app-grid-columns: 3;
-        --app-grid-gutter: 50px;
-        --app-grid-expandible-item-columns: 3;
+        --app-grid-columns: 1;
+        --app-grid-gutter: 5px;
+        --app-grid-expandible-item-columns: 1;
         background-color: var(--primary-background-color);
       }
 
@@ -52,25 +52,13 @@
 
       paper-card {
       }
-      .card-header { @apply --paper-font-headline; }
+      .card-header { @apply(--paper-font-headline); }
 
       .big-item {
         @apply(--app-grid-expandible-item);
       }
 
-      @media (min-width: 1920px) {
-        :host {
-          --app-grid-columns: 3;
-          --app-grid-gutter: 50px;
-          --app-grid-expandible-item-columns: 3;
-        }
-
-        .big-item {
-          @apply --app-grid-expandible-item;
-        }
-      }
-
-      @media (min-width: 1280px) and (max-width: 1919px) {
+      @media (min-width: 1280px) {
         :host {
           --app-grid-columns: 2;
           --app-grid-gutter: 25px;
@@ -82,11 +70,23 @@
         }
       }
 
-      @media (max-width: 1279px) {
+      /*@media (min-width: 1279px) {
         :host {
           --app-grid-columns: 1;
           --app-grid-gutter: 5px;
           --app-grid-expandible-item-columns: 1;
+        }
+
+        .big-item {
+          @apply --app-grid-expandible-item;
+        }
+      }*/
+
+      @media (min-width: 1920px) {
+        :host {
+          --app-grid-columns: 3;
+          --app-grid-gutter: 50px;
+          --app-grid-expandible-item-columns: 3;
         }
 
         .big-item {
@@ -102,7 +102,17 @@
         width: 300px;
         margin-left: calc(50vw - 150px);
       }
-
+      paper-card {
+        @apply(--layout-vertical);
+        --paper-card-content : {
+          	@apply(--layout-flex);
+        };
+        --paper-card-actions : {
+          @apply(--layout-horizontal);
+          @apply(--layout-around-justified);
+          @apply(--layout-center);
+        };
+      }
     </style>
     <paper-dialog   opened={{dialog}}
                     on-iron-overlay-opened="_trailerDialogOpen"
@@ -135,7 +145,6 @@
           </section>
         </article>
         <div class="card-actions">
-          <div class="horizontal around-justified layout">
             <paper-button raised on-tap="showTrailer" project=0>
               <iron-icon icon="av:featured-video"></iron-icon>
               Trailer
@@ -145,21 +154,66 @@
               Screenshots
             </paper-button>
             <paper-button raised on-tap="WIP">
-              <iron-icon icon="file-download"></iron-icon>
+              <iron-icon icon="icons:file-download"></iron-icon>
               Download
             </paper-button>
-          </div>
+        </div>
+      </paper-card>
+      <paper-card elevation="1" image="../images/LoudSpeakerThumbnail.jpg">
+        <article class="card-content">
+          <h1 class="card-header">LoudSpeaker</h1>
+          <section class="card-description">
+            <p align="justifiy">
+              What if your life, as beautiful as it is, is only an illusion?  <br>
+              What would happen if you’d listen to Sharon and go off the Yellow Brick Road? <br>
+              What would you do if you could control The Voice?
+            </p>
+          </section>
+        </article>
+        <div class="card-actions">
+          <paper-button raised on-tap="WIP" project=1>
+            <iron-icon icon="av:featured-video"></iron-icon>
+            Trailer
+          </paper-button>
+          <paper-button raised on-tap="WIP">
+            <iron-icon icon="image:collections"></iron-icon>
+            Screenshots
+          </paper-button>
+          <paper-button raised on-tap="WIP">
+            <iron-icon icon="icons:file-download"></iron-icon>
+            Download
+          </paper-button>
+        </div>
+      </paper-card>
+      <paper-card elevation="1" image="../images/HiveThumbnail.jpg">
+        <article class="card-content">
+          <h1 class="card-header">Hive</h1>
+          <section class="card-description">
+            <p align="justifiy">
+              Welcome to Alpha Centauri, your journey is over, but now is time to work and break some rocks.
+              Play as a space miner for Hive, a deep space mining company lurking for profit in the Void, and especially at your location.
+              Don’t forget, every breath you take it’s at their discretion.
+            </p>
+          </section>
+        </article>
+        <div class="card-actions">
+          <paper-button raised on-tap="WIP" project=1>
+            <iron-icon icon="av:featured-video"></iron-icon>
+            Trailer
+          </paper-button>
+          <paper-button raised on-tap="WIP">
+            <iron-icon icon="image:collections"></iron-icon>
+            Screenshots
+          </paper-button>
+          <paper-button raised on-tap="WIP">
+            <iron-icon icon="icons:file-download"></iron-icon>
+            Download
+          </paper-button>
         </div>
       </paper-card>
     </div>
     <paper-toast id="toast" text="Sorry, nothing here for now"></paper-toast>
-    <script>
-      toast.fitInto = grid;
-    </script>
   </template>
-<script>
-  toast.fitInto = grid;
-</script>
   <script>
 
     Polymer({
@@ -193,6 +247,7 @@
 
       attached: function () {
         this.currentTitle=this.pageTitle;
+        this.$$('#toast').fitInto = this.$$('#grid');
         this._updateGridStyles = this._updateGridStyles || function() {
           this.updateStyles();
         }.bind(this);

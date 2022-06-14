@@ -23,21 +23,22 @@ To have a seamless experience between launching a game through Moonlight and to 
 
 - Non-Steam games, especially UWP (looking at you GamePass users) are a pain to setup with Steam Remote Play.
 - Users on /r/SteamDeck and /r/Steam boast better perfs with Moonlight.
+- Individual game settings
 
 ## End result
 
-[!list]
+![list](./assets/00.jpg)
 _Games individually listed in the non-steam games section_
 
-[!GamePage]
+![gamePage](./assets/01.jpg)
 _Game images from SteamGridDB_
 
 Press play and then... 
 
-[!GameStart1]
+![gameStart1](./assets/02.jpg)
 _Moonlight starting automatically the game on the Host Machine..._
 
-[!GameStart2]
+![gameStart2](./assets/03.jpg)
 _And the game, ready to play!_
 
 ## Prerequisites:
@@ -57,13 +58,16 @@ If you're used to use a package manager through the terminal, by all mean, do so
 ### Testing Moonlight
 
 Before going throught the hoops to set it up with Steam, let's try it out.
-With your Host Machine on and on the same network as your Steam Deck, start Moonlight.
-You should see your Host Machine listed in. Take note of its name, you'll need it. If your Host Machine is not listed, refer to [Moonlight Troubleshooting Guide](https://github.com/moonlight-stream/moonlight-docs/wiki/Troubleshooting).
-
-Click/Touch it, you should have a pairing code popup on your Host Machine and the said code on your Deck. You know what to do.
-
-Now, try to launch a game.
-Ensure that your control are pass thru properly, if not, back on the Moonlight, click the cog up right and check "Force gamepad #1 always connected".
+- Ensure your Host Machine and Steam Deck are connected on the same local network.
+- Start Moonlight
+- You should see your Host Machine listed in. Take note of its name, you'll need it.
+> If your Host Machine is not listed, refer to [Moonlight Troubleshooting Guide](https://github.com/moonlight-stream/moonlight-docs/wiki/Troubleshooting).
+- Select your Host Machine.
+- You should have a pairing code prompt on your Host Machine, and a code displayed on your Steam Deck. You know what to do.
+- Try to launch a game.
+- Ensure that your control are passed thru properly.
+  - If not, back on the Moonlight, click the cog up right to access the settings of Moonlight.
+  - Check "Force gamepad #1 always connected".
 
 All's working? Good, now, let's set up a 'moonlighted' game in Steam
 
@@ -71,43 +75,47 @@ All's working? Good, now, let's set up a 'moonlighted' game in Steam
 
 #### Adding a Moonlight shortcut
 Technical explanation:
-We're about to set a steam app to launch moonlight cli with some arguments that will allow moonlight to start the game directly.
+>We're about to set a steam app to launch moonlight cli with some arguments that will allow moonlight to start the game directly.
 
+Steps:
 
 - From the desktop experience, start Steam and goto 'Add a non-steam game' (click Add a game and select the option).
 - Select Browse
-- Navigate to `/var/lib/flatpak/exports/bin/`
-- Change "File type" to "All files"
-- Select `com.moonlight stream.Moonlight`
-- Click Open.
-- Click on Add Select Programs.
+- Navigate to `/var/lib/flatpak/exports/bin/` (this is where the binaries of your flatpak installed apps are)
+- Change "File type" to "All files" (we're not using the `.desktop` of Moonlight)
+- Select `com.moonlight stream.Moonlight` 
+- Click Open
+- Click on Add Select Programs
 
 From here, you can launch Moonlight from Steam. But that's not our end goal.
 
-#### Parametrizing Moonlight Shortcut
+#### Parametrizing the Moonlight Shortcut
 
-- In your steam library, left click `com.moonlight stream.Moonlight` and select properties.
-- In the launch options put: `stream $HOST_MACHINE_NAME "Game of your Name"`. So for example, if my host machine name is GLAD0S and I want to play Portal 2 I should put `stream GLAD0S "Portal 2"`
-- Change the name from `com.moonlight stream.Moonlight` to the name of your game (I mean, I'd do that if I were you...)
+- In your Steam library, left click `com.moonlight stream.Moonlight` and select properties.
+- In the launch options put: `stream $HOST_MACHINE_NAME "Game of your Name"`.
+> So, for example, if my host machine name is GLAD0S and I want to play Portal 2 I should put `stream GLAD0S "Portal 2"`
+- Change the name from `com.moonlight stream.Moonlight` to the name of your game (I mean, I'd do that if I were you.)
 
-From here, your game is playable directly from the Steam Deck experience. However, no picture nothing, pretty ugly innit.
+From here, your game is playable directly from the Steam Deck experience. However, it's pretty blend. No pictures, nothing. Pretty dull, innit?
 
-#### Customizing Game Shortcut
+#### Customizing the Game Shortcut
 
 To customize your new shortcut, we'll use [SteamGridDb](https://www.steamgriddb.com].
 
-- Create an account
-- Install [SGDBoop](https://www.steamgriddb.com/boop) (Flatpak is the option your looking for).
-- Press dat boop button.
+- Create an account/Login
+- Install [SGDBoop](https://www.steamgriddb.com/boop) (Flatpak is the option your looking for)
+- On the install page, press dat boop button!
 - Restart your Steam Deck, go back to the Desktop.
 - Look for your game on SteamGridDb and pick the assets you want to use.
 - For each asset type (grids, heroes, icons, logos) do the following step:
   - Hover it and click on the Boop button with a + icon "Apply with BOOP (non-steam)"
-  - Chrome will prompt you with a pop-up, click on "Open xdg-open"
+  - Chrome will prompt you with a pop-up, click on "Open xdg-open" [^2]
   - That will open an app on your Deck, select the Game you created, and click OK.
-- Profit.
+- Profit!
 
 And that's all, your game is setup, you can go back to your deck. :tada:
 
+And yes, rince and repeat for every other game.
 
 [^1]: https://en.wikipedia.org/wiki/Steam_Deck
+[^2]: Security/tech explanation: This uses `xdg-open` and  the `sgdb` custom url scheme that BOOP registered on install to launch BOOP with some params to launch BOOP.

@@ -12,8 +12,7 @@ https://store.steampowered.com/steamdeck
 
 https://moonlight-stream.org/
 
-In short: It allows a machine (in this instance, a Steam Deck) to stream game from another machine using Nvidia custom sauce.
-
+In short: It allows a machine (in this instance, a Steam Deck) to stream games from another machine using Nvidia custom sauce.
 
 ## What is the goal here?
 
@@ -26,6 +25,13 @@ To have a seamless experience between launching a game through Moonlight and to 
 - Individual game settings
 
 ## End result
+
+### YouTube demo:
+[![YT Video](https://img.youtube.com/vi/CRi0XUmZWoc/0.jpg)](https://www.youtube.com/watch?v=CRi0XUmZWoc)
+_Click to go to YouTube_
+
+### Galery
+
 
 ![list](./assets/00.jpg)
 _Games individually listed in the non-steam games section_
@@ -53,7 +59,7 @@ _And the game, ready to play!_
 The Steam Deck ship with Flatpak as its package manager, you can use it directly, or use Discover.
 If you use Discover, wait for Discover to find all the packages, it'll take a while. Then look for Moonlight from "Moonlight Game Streaming Team" and install it.
 
-If you're used to use a package manager through the terminal, by all mean, do so. (won't hold your hands)
+If you're used to using a package manager through the terminal, by all means, do so. (won't hold your hands)
 
 ### Testing Moonlight
 
@@ -96,14 +102,14 @@ From here, you can launch Moonlight from Steam. But that's not our end goal.
 > So, for example, if my host machine name is GLAD0S and I want to play Portal 2 I should put `stream GLAD0S "Portal 2"`
 - Change the name from `com.moonlight stream.Moonlight` to the name of your game (I mean, I'd do that if I were you.)
 
-From here, your game is playable directly from the Steam Deck experience. However, it's pretty blend. No pictures, nothing. Pretty dull, innit?
+From here, your game is playable directly from the Steam Deck experience. However, it's pretty bland. No pictures, nothing. Pretty dull, innit?
 
 #### Customizing the Game Shortcut
 
 To customize your new shortcut, we'll use [SteamGridDb](https://www.steamgriddb.com].
 
 - Create an account/Login
-- Install [SGDBoop](https://www.steamgriddb.com/boop) (Flatpak is the option your looking for)
+- Install [SGDBoop](https://www.steamgriddb.com/boop) (Flatpak is the option you are looking for)
 - On the install page, press dat boop button!
 - Restart your Steam Deck, go back to the Desktop.
 - Look for your game on SteamGridDb and pick the assets you want to use.
@@ -113,9 +119,9 @@ To customize your new shortcut, we'll use [SteamGridDb](https://www.steamgriddb.
   - That will open an app on your Deck, select the Game you created, and click OK.
 - Profit!
 
-And that's all, your game is setup, you can go back to your deck. :tada:
+And that's all, your game is set up, you can go back to your deck. :tada:
 
-And yes, rince and repeat for every other game.
+And yes, rinse and repeat for every other game.
 
 [^1]: https://en.wikipedia.org/wiki/Steam_Deck
 [^2]: Security/tech explanation: This uses `xdg-open` and  the `sgdb` custom url scheme that BOOP registered on install to launch BOOP with some params to launch BOOP.

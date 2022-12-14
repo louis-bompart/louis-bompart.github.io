@@ -86,21 +86,18 @@ Technical explanation:
 Steps:
 
 - From the desktop experience, start Steam and goto 'Add a non-steam game' (click Add a game and select the option).
-- Select Browse
-- Navigate to `/var/lib/flatpak/exports/bin/` (this is where the binaries of your flatpak installed apps are)
-- Change "File type" to "All files" (we're not using the `.desktop` of Moonlight)
-- Select `com.moonlight stream.Moonlight` 
-- Click Open
+- Select any app, as we will be setting the target and start directory manually afterward.
 - Click on Add Select Programs
+- In your Steam library, left-click the shortcut you just added and select properties.
+- A window should open with several fields. First we want to set `Target` and `Start In` to `"/var/lib/flatpak/app/com.moonlight_stream.Moonlight/current/active/export/bin/com.moonlight_stream.Moonlight"`
 
-From here, you can launch Moonlight from Steam. But that's not our end goal.
+From here, you could close the window and launch Moonlight from Steam. But that's not our end goal.
 
 #### Parametrizing the Moonlight Shortcut
 
-- In your Steam library, left click `com.moonlight stream.Moonlight` and select properties.
-- In the launch options put: `stream $HOST_MACHINE_NAME "Game of your Name"`.
+- While on the properties windows, set the launch options: `stream $HOST_MACHINE_NAME "Game of your Name"`.
 > So, for example, if my host machine name is GLAD0S and I want to play Portal 2 I should put `stream GLAD0S "Portal 2"`
-- Change the name from `com.moonlight stream.Moonlight` to the name of your game (I mean, I'd do that if I were you.)
+- Change the name of the shortcut to the name of your game (I mean, I'd do that if I were you.)
 
 From here, your game is playable directly from the Steam Deck experience. However, it's pretty bland. No pictures, nothing. Pretty dull, innit?
 
@@ -117,6 +114,8 @@ To customize your new shortcut, we'll use [SteamGridDb](https://www.steamgriddb.
   - Hover it and click on the Boop button with a + icon "Apply with BOOP (non-steam)"
   - Chrome will prompt you with a pop-up, click on "Open xdg-open" [^2]
   - That will open an app on your Deck, select the Game you created, and click OK.
+  > If nothing happens, try the troubleshooting steps of [SGDBoop](https://www.steamgriddb.com/boop).
+  > Notably, try running `systemctl restart --user xdg-desktop-portal`.[^3]
 - Profit!
 
 And that's all, your game is set up, you can go back to your deck. :tada:

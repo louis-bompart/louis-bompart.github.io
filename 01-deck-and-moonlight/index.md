@@ -103,7 +103,7 @@ From here, your game is playable directly from the Steam Deck experience. Howeve
 
 #### Customizing the Game Shortcut
 
-To customize your new shortcut, we'll use [SteamGridDb](https://www.steamgriddb.com].
+To customize your new shortcut, we'll use [SteamGridDb](https://www.steamgriddb.com).
 
 - Create an account/Login
 - Install [SGDBoop](https://www.steamgriddb.com/boop) (Flatpak is the option you are looking for)
